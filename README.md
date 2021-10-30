@@ -1,6 +1,6 @@
 # microservice-test
 
-Product1 includes sample test for deferent layers for instance spring boot microservice.
+Product1 includes sample tests for different layers of an instance spring boot microservice.
 
 
-Product2 includes sample consumer test (CDC by Pact) for instance spring boot microservice from Product1.
+Product2 includes a sample consumer test (CDC by Pact) for the Product1 microservice.
