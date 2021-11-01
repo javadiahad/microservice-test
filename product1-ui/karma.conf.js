@@ -35,7 +35,9 @@ module.exports = function (config) {
       consumer: "ui",
       provider: "transferService",
       dir: "pacts",
-      spec: 2
-    }]
+      spec: 2,
+	  logLevel: "DEBUG"     
+    }],
+	 plugins: ["karma-*", "@pact-foundation/karma-pact"]
   });
 };
