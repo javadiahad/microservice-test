@@ -4,22 +4,33 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular', 'pact'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
-      require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma'),
-  require('@pact-foundation/karma-pact')
+      require('karma-coverage'),
+      require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
+      jasmine: {
+        // you can add configuration options for Jasmine here
+        // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
+        // for example, you can disable the random execution with `random: false`
+        // or set a specific seed with `seed: 4321`
+      },
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    coverageIstanbulReporter: {
+    jasmineHtmlReporter: {
+      suppressAll: true // removes the duplicated traces
+    },
+    coverageReporter: {
       dir: require('path').join(__dirname, './coverage/product1-ui'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+      subdir: '.',
+      reporters: [
+        { type: 'html' },
+        { type: 'text-summary' }
+      ]
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
@@ -28,16 +39,6 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true,
-	pact: [{
-      cors: true,
-      port: 1234,
-      consumer: "ui",
-      provider: "transferService",
-      dir: "pacts",
-      spec: 2,
-	  logLevel: "DEBUG"     
-    }],
-	 plugins: ["karma-*", "@pact-foundation/karma-pact"]
+    restartOnFileChange: true
   });
 };
