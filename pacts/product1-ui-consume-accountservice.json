@@ -1,6 +1,6 @@
 {
   "consumer": {
-    "name": "product1-ui"
+    "name": "product1-ui-consume"
   },
   "provider": {
     "name": "accountService"

@@ -1,0 +1,96 @@
+{
+  "provider": {
+    "name": "transferservice"
+  },
+  "consumer": {
+    "name": "product2consume"
+  },
+  "interactions": [
+    {
+      "description": "A request for transfering money between two account",
+      "request": {
+        "method": "POST",
+        "path": "/api/transfers",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "accountTo": "A200",
+          "amount": 100,
+          "accountFrom": "A100"
+        },
+        "matchingRules": {
+          "body": {
+            "$.accountFrom": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.accountTo": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.amount": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 100,
+          "id": 111
+        },
+        "matchingRules": {
+          "body": {
+            "$.id": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.amount": {
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "Two Account with sufficient balance exists"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.10"
+    }
+  }
+}

@@ -46,7 +46,7 @@ public class AccountServiceClient {
 		// request body 
 		TransferRequest tr = new TransferRequest(accountFrom, accountTo, amount);		
 		// build the request
-		return Optional.of(restTemplate.postForEntity("/accounts/transfer",tr,TransferResponse.class ).getBody());
+		return Optional.of(restTemplate.postForEntity("/api/transfers",tr,TransferResponse.class ).getBody());
 		
 	}	
 

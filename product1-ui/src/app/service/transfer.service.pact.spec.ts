@@ -10,10 +10,10 @@ describe('TransferServicePact', () => {
   const provider: Pact = new Pact({
     port: 1234,
     log: path.resolve(process.cwd(), 'pact', 'logs', 'mockserver-integration.log'),
-    dir: path.resolve(process.cwd(), '..', 'pacts', 'transferService'),
+    dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,
     logLevel: 'debug',
-    consumer: 'product1-ui',
+    consumer: 'product1-ui-consume',
     provider: 'transferservice'
   });
 
@@ -56,7 +56,7 @@ describe('TransferServicePact', () => {
 
     beforeAll(async () => {
       await provider.addInteraction({
-        state: `provider proccess and transfer a new request`,
+        state: `Two Account with sufficient balance exists`,
         uponReceiving: 'a request to POST a transferRequest',
         withRequest: {
           method: 'POST',
@@ -67,7 +67,7 @@ describe('TransferServicePact', () => {
           }
         },
         willRespondWith: {
-          status: 201,
+          status: 200,
           body: Matchers.somethingLike({
             id: transferId
           }),

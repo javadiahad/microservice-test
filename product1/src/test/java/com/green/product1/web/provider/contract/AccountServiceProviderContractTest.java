@@ -25,6 +25,7 @@ import com.green.product1.dtos.TransferRequest;
 import com.green.product1.repositories.AccountRepository;
 import com.green.product1.repositories.TransactionRepository;
 import com.green.product1.web.services.AccountService;
+import com.green.product1.web.services.TransferService;
 
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.State;
@@ -39,8 +40,8 @@ import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvide
  */
 
 @ExtendWith(SpringExtension.class)
-@Provider("accounts-service")
-@PactFolder("src/test/resources/pacts")
+@Provider("transferservice")
+@PactFolder("../pacts")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AccountServiceProviderContractTest {
 
@@ -54,7 +55,7 @@ public class AccountServiceProviderContractTest {
 	private TransactionRepository tr;
 
 	@Mock
-	private AccountService accountService;
+	private TransferService accountService;
 
 	@BeforeEach
 	void before(PactVerificationContext context) throws Exception {

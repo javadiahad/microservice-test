@@ -10,10 +10,10 @@ describe('AccountServicePact', () => {
   const provider: Pact = new Pact({
     port: 1234,
     log: path.resolve(process.cwd(), 'pact', 'logs', 'mockserver-integration.log'),
-    dir: path.resolve(process.cwd(), '..', 'pacts', 'accountService'),
+    dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,
     logLevel: 'debug',
-    consumer: 'product1-ui',
+    consumer: 'product1-ui-consume',
     provider: 'accountService'
   });
 

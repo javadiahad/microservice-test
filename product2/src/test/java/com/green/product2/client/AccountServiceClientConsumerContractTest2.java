@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, 
 		properties = "accounts-service.base-url:http://localhost:8082", classes = AccountServiceClient.class)
 @ExtendWith(PactConsumerTestExt.class)
-@PactTestFor(providerName = "accounts-service", port = "8082")
+@PactTestFor(providerName = "transferservice", port = "8082")
 public class AccountServiceClientConsumerContractTest2 {
 
 	@Autowired
@@ -42,7 +42,7 @@ public class AccountServiceClientConsumerContractTest2 {
 
 		
 	
-	@Pact(consumer = "accounts-transfer-consumer")
+	@Pact(consumer = "product2consume")
 	public RequestResponsePact transferExceptionalPact(PactDslWithProvider builder) {
 		Map<String, String> headers = new HashMap();
 		headers.put("Content-Type", "application/json");
@@ -58,7 +58,7 @@ public class AccountServiceClientConsumerContractTest2 {
 
 		return builder.given("Two Account exists,source account balance is Insufficient")
 				.uponReceiving("A request for transfering an money between two account")
-				.path("/accounts/transfer")
+				.path("/api/transfers")
 				.method("POST")
 				.headers(headers)
 				.body(requestBody)

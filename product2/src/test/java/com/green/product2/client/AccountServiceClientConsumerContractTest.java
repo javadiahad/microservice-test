@@ -34,14 +34,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, 
 		properties = "accounts-service.base-url:http://localhost:8081", classes = AccountServiceClient.class)
 @ExtendWith(PactConsumerTestExt.class)
-@PactTestFor(providerName = "accounts-service", port = "8081")
+@PactTestFor(providerName = "transferservice", port = "8081")
 public class AccountServiceClientConsumerContractTest {
 
 	@Autowired
 	private AccountServiceClient accountService;
 
 		
-	@Pact(consumer = "accounts-transfer-consumer")
+	@Pact(consumer = "product2consume")
 	public RequestResponsePact transferPact(PactDslWithProvider builder) {
 		Map<String, String> headers = new HashMap();
 	    headers.put("Content-Type", "application/json");
@@ -58,7 +58,7 @@ public class AccountServiceClientConsumerContractTest {
 		
 		return builder.given("Two Account with sufficient balance exists")
 				.uponReceiving("A request for transfering money between two account")
-				.path("/accounts/transfer")
+				.path("/api/transfers")
 				.method("POST")
 				.headers(headers)
 				.body(requestBody)

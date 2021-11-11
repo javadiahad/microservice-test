@@ -1,6 +1,6 @@
 {
   "consumer": {
-    "name": "product1-ui"
+    "name": "product1-ui-consume"
   },
   "provider": {
     "name": "transferservice"
@@ -8,7 +8,7 @@
   "interactions": [
     {
       "description": "a request to POST a transferRequest",
-      "providerState": "provider proccess and transfer a new request",
+      "providerState": "Two Account with sufficient balance exists",
       "request": {
         "method": "POST",
         "path": "/api/transfers",
@@ -22,7 +22,7 @@
         }
       },
       "response": {
-        "status": 201,
+        "status": 200,
         "headers": {
           "Content-Type": "application/json"
         },
