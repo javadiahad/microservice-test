@@ -90,18 +90,24 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+                    <systemPropertyVariables>
+						<pact.rootDir>../pacts</pact.rootDir>
+					</systemPropertyVariables>
+                </configuration>
+			</plugin>
+			<plugin>
 				<groupId>au.com.dius</groupId>
 				<artifactId>pact-jvm-provider-maven</artifactId>
 				<version>${pact.version}</version>
 				<configuration>
-					<!-- pact_broker is the service name in docker-compose -->
-					<pactBrokerUrl>http://pact_broker</pactBrokerUrl>
-					<projectVersion>${pact.consumer.version}</projectVersion>
-					<tags>
-						<tag>${pact.tag}</tag>
-					</tags>
+					<pactDirectory>../pacts</pactDirectory>
+					<pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
 				</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 
