@@ -1,0 +1,104 @@
+{
+  "consumer": {
+    "name": "product1-ui"
+  },
+  "provider": {
+    "name": "accountservice"
+  },
+  "interactions": [
+    {
+      "description": "a request to GET a account",
+      "providerState": "account A100 exists",
+      "request": {
+        "method": "GET",
+        "path": "/api/accounts/A100"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "holderName": "Bill Gates",
+          "name": "My cash in hand",
+          "balance": 0
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to POST a account",
+      "providerState": "provider opens a new account",
+      "request": {
+        "method": "POST",
+        "path": "/api/accounts",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "holderName": "Bill Gates",
+          "name": "My cash in hand",
+          "balance": 0
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "A100"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to PUT a account",
+      "providerState": "account A100 exists",
+      "request": {
+        "method": "PUT",
+        "path": "/api/accounts/A100",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "holderName": "Bill Gates",
+          "name": "My cash in hand",
+          "balance": 0
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "holderName": "Bill Gates",
+          "name": "My cash in hand",
+          "balance": 0
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  }
+}
