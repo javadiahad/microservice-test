@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { UserService } from './user.service';
+import { AccountService } from './account.service';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('UserService', () => {
@@ -8,11 +8,11 @@ describe('UserService', () => {
       HttpClientModule
     ],
     providers: [
-      UserService
+      AccountService
     ],
   }));
   it('should be created', () => {
-    const service: UserService = TestBed.get(UserService);
+    const service: AccountService = TestBed.get(AccountService);
     expect(service).toBeTruthy();
   });
 });

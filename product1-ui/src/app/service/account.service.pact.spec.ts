@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './account.service';
-import { Account } from './account';
 import * as path from 'path';
 import { Matchers, Pact } from '@pact-foundation/pact';
+import { Account } from '../models/account';
 
 describe('AccountServicePact', () => {
 
@@ -14,7 +14,7 @@ describe('AccountServicePact', () => {
     spec: 3,
     logLevel: 'debug',
     consumer: 'product1-ui',
-    provider: 'accountservice'
+    provider: 'accountService'
   });
 
   // Setup Pact mock server for this service

@@ -3,7 +3,7 @@
     "name": "product1-ui"
   },
   "provider": {
-    "name": "accountservice"
+    "name": "accountService"
   },
   "interactions": [
     {
