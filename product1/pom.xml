@@ -87,12 +87,8 @@
 			<version>4.0.10</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency>
-			<groupId>au.com.dius</groupId>
-			<artifactId>pact-jvm-provider-spring</artifactId>
-			<version>4.0.10</version>
-			<scope>test</scope>
-		</dependency> -->
+		<!-- <dependency> <groupId>au.com.dius</groupId> <artifactId>pact-jvm-provider-spring</artifactId> 
+			<version>4.0.10</version> <scope>test</scope> </dependency> -->
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
@@ -112,32 +108,42 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>		 
-			 <plugin>
+			</plugin>
+
+
+		<!--  <plugin>
                 <groupId>au.com.dius.pact.provider</groupId>
                 <artifactId>maven</artifactId>
                 <version>4.1.21</version>
                 <configuration>
                     <serviceProviders>
                         <serviceProvider>
-                            <name>accounts-service</name>
-                           <!--  <protocol>http</protocol>
+                            <name>transferservice</name>
+                            <protocol>http</protocol>
                             <host>localhost</host>
                             <port>9080</port>
-                            <path>/</path> -->
-                            <pactFileDirectory>src/test/resources/pacts</pactFileDirectory>
-                        </serviceProvider>
+                        <path>..\..\pacts</path> 
+                      </serviceProvider>
                     </serviceProviders>
                     <projectVersion>${project.version}</projectVersion>
                     <skipPactPublish>true</skipPactPublish>
-<!--                     <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
- -->                    <tags>
+                    <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
+                    <tags>
                         <tag>open-liberty-pact</tag>
                     </tags>
                 </configuration>
             </plugin>
-
+ -->
 		</plugins>
+
+		<testResources>
+			<testResource>
+				<directory>../../</directory>
+				<includes>
+					<include>pacts/*.json</include>
+				</includes>
+			</testResource>
+		</testResources>
 	</build>
 
 </project>

@@ -1,0 +1,27 @@
+<div class="card m-4">
+  <div class="card-header">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+      Accounts
+      <span class="badge badge-secondary badge-pill">{{accounts.length}}</span></h4>
+  </div>
+  <div class="card-body">
+      <ul class="list-group">
+        <li *ngFor="let account of accounts"
+            class="list-group-item d-flex justify-content-between lh-condensed"
+            (click)="closeTooltip(tooltip)"  [ngbTooltip]="tipContent" #tooltip="ngbTooltip" triggers="manual" placement="top-right">
+          <ng-template #tipContent class=".bg-success text-sm-left"><small (click)="closeTooltip(tooltip)">Account state have just changed!</small></ng-template>
+          <div>
+            <h6 class="my-0">{{account.firstName}} {{account.surname}}</h6>
+            <small class="text-muted">id: {{account.id}}</small>
+          </div>
+          <span class="text-muted">{{account.balance | currency}}</span>
+        </li>
+      </ul>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted d-flex justify-content-between">
+      <span>Total (USD)</span>
+      <strong>{{ totalBalance | currency }}</strong>
+    </small>
+  </div>
+</div>

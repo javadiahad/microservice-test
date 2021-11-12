@@ -14,6 +14,7 @@ export class AccountService {
   constructor(private httpClient: HttpClient) {
   }
 
+
   open(resource: Account): Observable<String> {
     return this.httpClient
       .post(this.BASE_URL, resource).pipe(
@@ -28,6 +29,11 @@ export class AccountService {
   update(resource: Account, id: string): Observable<any> {
     return this.httpClient
       .put(`${this.BASE_URL}/${id}`, resource);
+  }
+
+  findAll(): Observable<Account[]> {
+    return this.httpClient.get<Account[]>(this.BASE_URL)
+      .pipe(map(res => res.map(element => new Account(element))));
   }
 
 

@@ -4,16 +4,19 @@ import { AccountService } from './account.service';
 import * as path from 'path';
 import { Matchers, Pact } from '@pact-foundation/pact';
 import { Account } from '../models/account';
-
+import {
+  mockAccounts,
+  expectedAccount, 
+} from './mock.data';
 describe('AccountServicePact', () => {
 
   const provider: Pact = new Pact({
     port: 1234,
-    log: path.resolve(process.cwd(), 'pact', 'logs', 'mockserver-integration.log'),
+    log: path.resolve(process.cwd(), 'pact', 'logs', 'AccountServicePact.log'),
     dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,
     logLevel: 'debug',
-    consumer: 'product1-ui-consume',
+    consumer: 'product1-ui-client',
     provider: 'accountService'
   });
 
@@ -157,4 +160,33 @@ describe('AccountServicePact', () => {
       });
     });
   });
+
+  
+  describe('findAll()', () => {
+
+
+    beforeAll(async () => {
+      await provider.addInteraction({
+        state: `Two accounts exists`,
+        uponReceiving: 'a request for all the accounts',
+        withRequest: {
+          method: 'GET',
+          path: `/api/accounts`,
+        },
+        willRespondWith: {
+          status: 200,
+          body: Matchers.somethingLike(mockAccounts)
+        }
+      });
+    });
+
+    it('should receive the full list of accounts', async () => {
+      const accountService: AccountService = TestBed.get(AccountService);
+
+      await accountService.findAll().toPromise().then(response => {
+        expect(response).toEqual(mockAccounts);
+      });
+    });
+  });
+
 });

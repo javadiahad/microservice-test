@@ -1,6 +1,6 @@
 {
   "consumer": {
-    "name": "product1-ui-consume"
+    "name": "product1-ui-client"
   },
   "provider": {
     "name": "accountService"
@@ -88,6 +88,38 @@
           "name": "My cash in hand",
           "balance": 0
         },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request for all the accounts",
+      "providerState": "Two accounts exists",
+      "request": {
+        "method": "GET",
+        "path": "/api/accounts"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": [
+          {
+            "id": "1",
+            "holderName": "Bill Gates",
+            "name": "My cash in hand",
+            "balance": 100
+          },
+          {
+            "id": "2",
+            "holderName": "Bill Gates",
+            "name": "My saving in hand",
+            "balance": 200
+          }
+        ],
         "matchingRules": {
           "$.body": {
             "match": "type"

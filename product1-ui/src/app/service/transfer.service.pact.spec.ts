@@ -9,11 +9,11 @@ describe('TransferServicePact', () => {
 
   const provider: Pact = new Pact({
     port: 1234,
-    log: path.resolve(process.cwd(), 'pact', 'logs', 'mockserver-integration.log'),
+    log: path.resolve(process.cwd(), 'pact', 'logs', 'TransferServicePact.log'),
     dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,
     logLevel: 'debug',
-    consumer: 'product1-ui-consume',
+    consumer: 'product1-ui-client',
     provider: 'transferservice'
   });
 

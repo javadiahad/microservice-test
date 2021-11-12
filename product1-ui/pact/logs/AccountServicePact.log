@@ -1,0 +1,270 @@
+I, [2021-11-12T13:11:31.854614 #22564]  INFO -- : Registered expected interaction GET /api/accounts/A100
+D, [2021-11-12T13:11:31.854614 #22564] DEBUG -- : {
+  "description": "a request to GET a account",
+  "providerState": "account A100 exists",
+  "request": {
+    "method": "GET",
+    "path": "/api/accounts/A100"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "holderName": "Bill Gates",
+        "name": "My cash in hand",
+        "balance": 0
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-12T13:11:31.964537 #22564]  INFO -- : Received request GET /api/accounts/A100
+D, [2021-11-12T13:11:31.964537 #22564] DEBUG -- : {
+  "path": "/api/accounts/A100",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost:1234/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost:1234",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-11-12T13:11:31.965537 #22564]  INFO -- : Found matching response for GET /api/accounts/A100
+D, [2021-11-12T13:11:31.965537 #22564] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "holderName": "Bill Gates",
+      "name": "My cash in hand",
+      "balance": 0
+    }
+  }
+}
+I, [2021-11-12T13:11:31.998579 #22564]  INFO -- : Verifying - interactions matched
+I, [2021-11-12T13:11:32.008571 #22564]  INFO -- : Cleared interactions
+I, [2021-11-12T13:11:32.019562 #22564]  INFO -- : Registered expected interaction POST /api/accounts
+D, [2021-11-12T13:11:32.019562 #22564] DEBUG -- : {
+  "description": "a request to POST a account",
+  "providerState": "provider opens a new account",
+  "request": {
+    "method": "POST",
+    "path": "/api/accounts",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "holderName": "Bill Gates",
+      "name": "My cash in hand",
+      "balance": 0
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "id": "A100"
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-12T13:11:32.051543 #22564]  INFO -- : Received request POST /api/accounts
+D, [2021-11-12T13:11:32.051543 #22564] DEBUG -- : {
+  "path": "/api/accounts",
+  "query": "",
+  "method": "post",
+  "body": {
+    "holderName": "Bill Gates",
+    "name": "My cash in hand",
+    "balance": 0
+  },
+  "headers": {
+    "Content-Length": "64",
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost:1234/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost:1234",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-11-12T13:11:32.052550 #22564]  INFO -- : Found matching response for POST /api/accounts
+D, [2021-11-12T13:11:32.052550 #22564] DEBUG -- : {
+  "status": 201,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "id": "A100"
+    }
+  }
+}
+I, [2021-11-12T13:11:32.061539 #22564]  INFO -- : Verifying - interactions matched
+I, [2021-11-12T13:11:32.073532 #22564]  INFO -- : Cleared interactions
+I, [2021-11-12T13:11:32.084526 #22564]  INFO -- : Registered expected interaction PUT /api/accounts/A100
+D, [2021-11-12T13:11:32.084526 #22564] DEBUG -- : {
+  "description": "a request to PUT a account",
+  "providerState": "account A100 exists",
+  "request": {
+    "method": "PUT",
+    "path": "/api/accounts/A100",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "holderName": "Bill Gates",
+        "name": "My cash in hand",
+        "balance": 0
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "holderName": "Bill Gates",
+        "name": "My cash in hand",
+        "balance": 0
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-12T13:11:32.106498 #22564]  INFO -- : Received request PUT /api/accounts/A100
+D, [2021-11-12T13:11:32.106498 #22564] DEBUG -- : {
+  "path": "/api/accounts/A100",
+  "query": "",
+  "method": "put",
+  "body": {
+    "holderName": "Bill Gates",
+    "name": "My cash in hand",
+    "balance": 0
+  },
+  "headers": {
+    "Content-Length": "64",
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost:1234/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost:1234",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-11-12T13:11:32.106498 #22564]  INFO -- : Found matching response for PUT /api/accounts/A100
+D, [2021-11-12T13:11:32.106498 #22564] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "holderName": "Bill Gates",
+      "name": "My cash in hand",
+      "balance": 0
+    }
+  }
+}
+I, [2021-11-12T13:11:32.116494 #22564]  INFO -- : Verifying - interactions matched
+I, [2021-11-12T13:11:32.128501 #22564]  INFO -- : Cleared interactions
+I, [2021-11-12T13:11:32.139479 #22564]  INFO -- : Registered expected interaction GET /api/accounts
+D, [2021-11-12T13:11:32.139479 #22564] DEBUG -- : {
+  "description": "a request for all the accounts",
+  "providerState": "Two accounts exists",
+  "request": {
+    "method": "GET",
+    "path": "/api/accounts"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": [
+        {
+          "id": "1",
+          "holderName": "Bill Gates",
+          "name": "My cash in hand",
+          "balance": 100
+        },
+        {
+          "id": "2",
+          "holderName": "Bill Gates",
+          "name": "My saving in hand",
+          "balance": 200
+        }
+      ]
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-12T13:11:32.161466 #22564]  INFO -- : Received request GET /api/accounts
+D, [2021-11-12T13:11:32.161466 #22564] DEBUG -- : {
+  "path": "/api/accounts",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost:1234/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost:1234",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-11-12T13:11:32.161466 #22564]  INFO -- : Found matching response for GET /api/accounts
+D, [2021-11-12T13:11:32.161466 #22564] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": [
+      {
+        "id": "1",
+        "holderName": "Bill Gates",
+        "name": "My cash in hand",
+        "balance": 100
+      },
+      {
+        "id": "2",
+        "holderName": "Bill Gates",
+        "name": "My saving in hand",
+        "balance": 200
+      }
+    ]
+  }
+}
+I, [2021-11-12T13:11:32.171459 #22564]  INFO -- : Verifying - interactions matched
+I, [2021-11-12T13:11:32.182455 #22564]  INFO -- : Cleared interactions
+I, [2021-11-12T13:11:32.193448 #22564]  INFO -- : Writing pact for accountService to F:/work1400/microservice-test/pacts/product1-ui-client-accountservice.json

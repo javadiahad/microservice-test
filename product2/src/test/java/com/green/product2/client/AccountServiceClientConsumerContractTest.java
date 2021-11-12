@@ -41,7 +41,7 @@ public class AccountServiceClientConsumerContractTest {
 	private AccountServiceClient accountService;
 
 		
-	@Pact(consumer = "product2consume")
+	@Pact(consumer = "product2client")
 	public RequestResponsePact transferPact(PactDslWithProvider builder) {
 		Map<String, String> headers = new HashMap();
 	    headers.put("Content-Type", "application/json");

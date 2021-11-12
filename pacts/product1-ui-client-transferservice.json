@@ -1,6 +1,6 @@
 {
   "consumer": {
-    "name": "product1-ui-consume"
+    "name": "product1-ui-client"
   },
   "provider": {
     "name": "transferservice"

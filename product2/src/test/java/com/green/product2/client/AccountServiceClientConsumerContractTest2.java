@@ -42,7 +42,7 @@ public class AccountServiceClientConsumerContractTest2 {
 
 		
 	
-	@Pact(consumer = "product2consume")
+	@Pact(consumer = "product2client")
 	public RequestResponsePact transferExceptionalPact(PactDslWithProvider builder) {
 		Map<String, String> headers = new HashMap();
 		headers.put("Content-Type", "application/json");
