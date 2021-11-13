@@ -136,14 +136,6 @@
  -->
 		</plugins>
 
-		<testResources>
-			<testResource>
-				<directory>../../</directory>
-				<includes>
-					<include>pacts/*.json</include>
-				</includes>
-			</testResource>
-		</testResources>
 	</build>
 
 </project>

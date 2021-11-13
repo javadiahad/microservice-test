@@ -24,13 +24,14 @@ import com.green.product1.exceptions.ServiceBusinessException;
 import com.green.product1.repositories.AccountRepository;
 import com.green.product1.repositories.TransactionRepository;
 import com.green.product1.web.services.AccountService;
+import com.green.product1.web.services.TransferService;
 
 /**
  * @author Ahad
  *
  */
 @ExtendWith(MockitoExtension.class)
-class AccountServiceUnitTest {
+class TransferServiceUnitTest {
 
 	@Mock
 	private AccountRepository ar;
@@ -39,24 +40,29 @@ class AccountServiceUnitTest {
 	private TransactionRepository tr;
 		
 	@InjectMocks
-	private AccountService as;
+	private TransferService ts;
 	
-
+	
 	@Test
 	@DisplayName("")
-	final void givenValidAccountThenShouldReturnBalance(){
+	final void givenTwoAccountAndAmountWhenTransferThenSucceedAndReturnId() {
 		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account( "A100", BigDecimal.ONE)));
-		assertEquals(BigDecimal.ONE, as.getBalance("A100"));
+		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account( "A200", BigDecimal.ONE)));
+		when(tr.save(any())).thenReturn(new Transaction(1,BigDecimal.ONE));
+		Transaction res = ts.transfer(new TransferRequest("A100", "A200", BigDecimal.ONE));
+		assertNotNull(res);
+		assertNotNull(res.getId());
 	}
+		
 	
 	@Test
 	@DisplayName("")
-	final void givenWrongAccountThenShouldThrowException() {
-		when(ar.findByCode("A100")).thenReturn(Optional.empty());
-		DataNotFoundException ex = assertThrows(DataNotFoundException.class,()-> as.getBalance("A100"));
+	final void givenWrongAccountWhenTransferThenShouldThrowException() {
+		when(ar.findByCode("A100")).thenReturn(Optional.empty());		
+		DataNotFoundException ex = assertThrows(DataNotFoundException.class,()-> ts.transfer(new TransferRequest("A100", "A200", BigDecimal.ONE)));
 		assertEquals(String.format("Account %s not found!","A100"),ex.getMessage());
 		assertEquals("ACC-1000",ex.getErrorCode());
-
 	}
+
 
 }

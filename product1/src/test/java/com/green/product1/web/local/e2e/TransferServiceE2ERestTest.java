@@ -41,7 +41,7 @@ import io.restassured.http.ContentType;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AccountServiceE2ERestTest {
+public class TransferServiceE2ERestTest {
 
 	@LocalServerPort
 	private int port;
@@ -50,14 +50,16 @@ public class AccountServiceE2ERestTest {
 	private AccountRepository ar;
 	
 	
-	private static final String account="A300";
+	private static final String source="A100";
+	private static final String target="A200";
 
 
 	
 	@BeforeEach
 	public void setup() throws Exception {
-		//seed database		
-		ar.save(new Account(account, BigDecimal.valueOf(100)));
+		//seed database
+		ar.save(new Account(source, BigDecimal.valueOf(80)));
+		ar.save(new Account(target, BigDecimal.valueOf(20)));
 	}
 	
 	
@@ -68,18 +70,29 @@ public class AccountServiceE2ERestTest {
 	}
 	
 	
-		
 	@Test
-	public void shouldReturnBalance() throws Exception {
-		given().
-		pathParam("account",account).
-		// when		
-		when().get(String.format("http://localhost:%s/accounts/balance/{account}", port))
-				// then:requested amount should be transfered
-				// then account source new balance=50$ and account target new balance=50$
-				.then().log().all().assertThat().statusCode(is(200))
-				.and().body(containsString("100"));
+	@DisplayName("Scenario:transfering money")	
+	public void shouldTransferMoney() throws Exception {
 		
-	}
+		// given:The Account Holder login in to system 
+		// given: two account, account "A100" with balance=80$ and account "A200" with balance=20$
+		// and the Account Holder selects account number "A100" as source and "A200" as target 
+		// enters $30
+		given()
+		.contentType(ContentType.JSON)
+		.body(asJson(new TransferRequest("A100", "A200", BigDecimal.valueOf(30))))
+		
+		// when: the Account Holder click transfer button
+		.when().post(String.format("http://localhost:%s/api/transfers", port))
+		
+		// then:30$ should be transfered and tracking id should be returned
+		// then: account "A100" new balance should be 50$
+		// then: account "A200" new balance should be 50$
+		.then().log().all().statusCode(is(200)).assertThat().body("id", notNullValue());
+		//The following part assertion of can be omitted
+		assertThat(BigDecimal.valueOf(50).setScale(2),is(ar.findByCode(source).get().getBalance()));
+		assertThat(BigDecimal.valueOf(50).setScale(2),is(equalTo(ar.findByCode(target).get().getBalance())));
+	}		
+	
 
 }

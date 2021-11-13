@@ -34,15 +34,15 @@ import com.green.product1.domain.Transaction;
 import com.green.product1.dtos.TransferRequest;
 import com.green.product1.repositories.AccountRepository;
 import com.green.product1.repositories.TransactionRepository;
-import com.green.product1.web.services.AccountService;
+import com.green.product1.web.services.TransferService;
 
 /**
  * @author Ahad
  *
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = AccountService.class)
-public class AccountServiceAPITest {
+@WebMvcTest(controllers = TransferService.class)
+public class TransferServiceAPITest {
 	private static String expectedContentType = "application/json";
 
 	@Autowired
@@ -62,7 +62,7 @@ public class AccountServiceAPITest {
 		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100", BigDecimal.ONE)));
 		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200", BigDecimal.ONE)));
 		when(tr.save(any())).thenReturn(new Transaction(1, BigDecimal.ONE));
-		mvc.perform(post("/accounts/transfer").content(asJson(new TransferRequest("A100", "A200", BigDecimal.ONE)))
+		mvc.perform(post("/api/transfers").content(asJson(new TransferRequest("A100", "A200", BigDecimal.ONE)))
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print()).andExpect(status().isOk())
@@ -77,7 +77,7 @@ public class AccountServiceAPITest {
 		when(ar.findByCode("A100")).thenReturn(Optional.empty());
 		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200", BigDecimal.ONE)));
 		when(tr.save(any())).thenReturn(new Transaction(1, BigDecimal.ONE));
-		mvc.perform(post("/accounts/transfer").content(asJson(new TransferRequest("A100", "A200", BigDecimal.ONE)))
+		mvc.perform(post("/api/transfers").content(asJson(new TransferRequest("A100", "A200", BigDecimal.ONE)))
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print()).andExpect(status().isNotFound())
@@ -91,7 +91,7 @@ public class AccountServiceAPITest {
 		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100", BigDecimal.ONE)));
 		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200", BigDecimal.valueOf(100))));
 		when(tr.save(any())).thenReturn(new Transaction(1, BigDecimal.ONE));
-		mvc.perform(post("/accounts/transfer").content(asJson(new TransferRequest("A100", "A200", BigDecimal.valueOf(100))))
+		mvc.perform(post("/api/transfers").content(asJson(new TransferRequest("A100", "A200", BigDecimal.valueOf(100))))
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print()).andExpect(status().is4xxClientError())
@@ -100,25 +100,6 @@ public class AccountServiceAPITest {
 	}
 	
 	
-//
-//	@Test
-//	@DisplayName("")
-//	final void givenValidAccountThenShouldReturnBalance() throws Exception {
-//		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100", BigDecimal.valueOf(100))));
-//		mvc.perform(get("/balance/{accountCode}", "A100"))
-//		.andDo(print()).andExpect(status().isOk())
-//		.andExpect(MockMvcResultMatchers.content().contentType(expectedContentType))
-//		.andExpect(MockMvcResultMatchers.jsonPath("").value("100.00")).andReturn().getResponse();
-//	}
-
-//	@Test
-//	@DisplayName("")
-//	final void givenWrongAccountThenShouldThrowException() {
-//		when(ar.findByCode("A100")).thenReturn(Optional.empty());
-//		 Exception ex = assertThrows(Exception.class,()-> as.getBalance("A100"));
-//		 assertEquals(String.format("Account %s not found!","A100"),ex.getMessage());
-//
-//	}
 	
 
 }

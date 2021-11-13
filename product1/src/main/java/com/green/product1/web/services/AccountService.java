@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.util.Streamable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,29 +39,14 @@ public class AccountService  {
 	private AccountRepository accountRepository;
 	
 	
-	@Autowired
-	private TransactionRepository transactionRepository;
 	
-	
-	
-	
-	@PostMapping("/transfer")
-	public Transaction transfer( @RequestBody TransferRequest req ) {
-		Account source = accountRepository.findByCode(req.getAccountFrom())
-				.orElseThrow(() -> new DataNotFoundException("ACC-1000","Account %s not found!",req.getAccountFrom()));
+//	@GetMapping()
+//	public Iterable<Account> findAll() {
+//		Iterable<Account> accounts = accountRepository.findAll();		
+//		return Streamable.of(accounts).toList();
+//	}
 		
-		Account target = accountRepository.findByCode(req.getAccountTo())
-				.orElseThrow(()->new DataNotFoundException("ACC-1000","Account %s not found!",req.getAccountTo())) ;
-
-		Transaction trn=new Transaction(req.getAmount());
-		trn.withdrawAccount(source);
-		trn.depositAccount(target);
-		accountRepository.save(source);
-		accountRepository.save(target);
-		return transactionRepository.save(trn);
-	}
-	
-	
+		
 	@GetMapping("/balance/{accountCode}")
 	public BigDecimal getBalance(@PathVariable("accountCode") String accountCode) {
 		Account account = accountRepository.findByCode(accountCode)
