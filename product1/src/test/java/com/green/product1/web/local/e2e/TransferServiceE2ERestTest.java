@@ -58,8 +58,8 @@ public class TransferServiceE2ERestTest {
 	@BeforeEach
 	public void setup() throws Exception {
 		//seed database
-		ar.save(new Account(source, BigDecimal.valueOf(80)));
-		ar.save(new Account(target, BigDecimal.valueOf(20)));
+		ar.save(new Account(source,"Bill Gates", "My cash in hand", BigDecimal.valueOf(80)));
+		ar.save(new Account(target,"Poor People", "Living expenses", BigDecimal.valueOf(20)));
 	}
 	
 	

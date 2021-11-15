@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.green.product1.exceptions.ServiceBusinessException;
 
 /**
@@ -14,46 +15,53 @@ import com.green.product1.exceptions.ServiceBusinessException;
  */
 @Entity
 public class Account {
-	
+
 	@Id
 	@GeneratedValue
+	@JsonIgnore
 	private Integer id;
-	
+
 	private String code;
-	
+
 	private BigDecimal balance;
 
-	
-	
-	
+	private String holderName;
+
+	private String name;
+
 	public Account() {
 		super();
 	}
 
 	public BigDecimal widthrawFromAccount(BigDecimal amount) {
-		if(balance.subtract(amount).compareTo(BigDecimal.ZERO)<0) throw new ServiceBusinessException("ACC-1000","Insufficient Balance for account %s !",code);
-		balance=balance.subtract(amount);
+		if (balance.subtract(amount).compareTo(BigDecimal.ZERO) < 0)
+			throw new ServiceBusinessException("ACC-1000", "Insufficient Balance for account %s !", code);
+		balance = balance.subtract(amount);
 		return balance;
-		
-	}
-	
-	public BigDecimal depositIntoAccount(BigDecimal amount) {
-		balance= balance.add(amount);
-		return balance;
-		
-	}	
-	
-	public Account(String code, BigDecimal balance) {
-		super();
-		this.code = code;
-		this.balance = balance;
+
 	}
 
-	public Account(Integer id, String code, BigDecimal balance) {
+	public BigDecimal depositIntoAccount(BigDecimal amount) {
+		balance = balance.add(amount);
+		return balance;
+
+	}
+
+	public Account(Integer id, String code, String holderName, String name, BigDecimal balance) {
 		super();
 		this.id = id;
 		this.code = code;
 		this.balance = balance;
+		this.holderName = holderName;
+		this.name = name;
+	}
+
+	public Account(String code, String holderName, String name, BigDecimal balance) {
+		super();
+		this.code = code;
+		this.balance = balance;
+		this.holderName = holderName;
+		this.name = name;
 	}
 
 	public Integer getId() {
@@ -78,8 +86,41 @@ public class Account {
 	
 	
 
-	
-	
+	/**
+	 * @return the holderName
+	 */
+	public String getHolderName() {
+		return holderName;
+	}
+
+	/**
+	 * @param holderName the holderName to set
+	 */
+	public void setHolderName(String holderName) {
+		this.holderName = holderName;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @param balance the balance to set
+	 */
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,11 +161,6 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", code=" + code + ", balance=" + balance + "]";
-	} 
-	
-	
-	
-	
-	
+	}
 
 }

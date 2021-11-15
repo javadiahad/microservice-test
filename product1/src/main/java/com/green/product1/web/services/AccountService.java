@@ -1,7 +1,10 @@
 package com.green.product1.web.services;
 
 import java.math.BigDecimal;
-
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +32,7 @@ import com.green.product1.repositories.TransactionRepository;
  *
  */
 @RestController
-@RequestMapping("accounts")
+@RequestMapping("api/accounts")
 public class AccountService  {
 	
 	@Value("${myConfig.value:true}") 
@@ -40,11 +43,11 @@ public class AccountService  {
 	
 	
 	
-//	@GetMapping()
-//	public Iterable<Account> findAll() {
-//		Iterable<Account> accounts = accountRepository.findAll();		
-//		return Streamable.of(accounts).toList();
-//	}
+	@GetMapping()
+	public List<Account> findAll() {
+		Iterable<Account> accounts = accountRepository.findAll();			
+		return StreamSupport.stream(accounts.spliterator(),false).collect(Collectors.toList());
+	}
 		
 		
 	@GetMapping("/balance/{accountCode}")

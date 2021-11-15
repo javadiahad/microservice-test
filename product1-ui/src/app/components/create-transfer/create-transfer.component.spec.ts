@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CreateTransferComponent} from './create-transfer.component';
 import {FormsModule} from "@angular/forms";
-import {MatSnackBarModule} from "@angular/material";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {By} from '@angular/platform-browser';
 import {TransferService} from "../../service/transfer.service";
 import {AccountService} from "../../service/account.service";

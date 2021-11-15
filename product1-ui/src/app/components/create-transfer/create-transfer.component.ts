@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TransferRequest} from '../../models/transferRequest';
 import {TransferService} from "../../service/transfer.service";
-import {MatSnackBar} from "@angular/material";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {AccountService} from "../../service/account.service";
 import {Account} from "../../models/Account";
 
@@ -25,24 +25,9 @@ export class CreateTransferComponent implements OnInit {
     this.transfer.accountFrom = "A100";
     this.transfer.accountTo = "A200";
     this.transfer.amount = 100;
-    this._easyTransferAlertEnabled = this.initEasyTransferAlertEnabled();
-  }
 
-  private _easyTransferAlertEnabled: boolean;
-
-  get easyTransferAlertEnabled(): boolean {
-    return this._easyTransferAlertEnabled;
   }
-
-  set easyTransferAlertEnabled(value: boolean) {
-    this._easyTransferAlertEnabled = value;
-    localStorage.setItem("easyTransferAlertEnabled", String(value));
-  }
-
-  private initEasyTransferAlertEnabled(): boolean {
-    let item = localStorage.getItem("easyTransferAlertEnabled");
-    return item == undefined || item == 'true';
-  }
+  
 
   ngOnInit() {
     this.initAccounts();

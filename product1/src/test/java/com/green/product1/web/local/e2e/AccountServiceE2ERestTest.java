@@ -51,13 +51,17 @@ public class AccountServiceE2ERestTest {
 	
 	
 	private static final String account="A300";
+	private static final String account2="A400";
+
 
 
 	
 	@BeforeEach
 	public void setup() throws Exception {
 		//seed database		
-		ar.save(new Account(account, BigDecimal.valueOf(100)));
+		ar.save(new Account(account,"Bill Gates", "My cash in hand", BigDecimal.valueOf(100)));
+		ar.save(new Account(account2,"Poor People", "Living expenses", BigDecimal.valueOf(200)));
+
 	}
 	
 	
@@ -67,16 +71,23 @@ public class AccountServiceE2ERestTest {
 		
 	}
 	
-	
+	@Test
+	public void shouldReturnAllAccounts() throws Exception {
+		given().
+		// when	some accounts	
+		when().get(String.format("http://localhost:%s/api/accounts", port))
+		// then:all accounts should should be returned.
+				.then().log().all().assertThat().statusCode(is(200))
+				.and().body(containsString("100")).and().body(containsString("200"));		
+	}
 		
 	@Test
 	public void shouldReturnBalance() throws Exception {
-		given().
+		given().//One account already exists
 		pathParam("account",account).
 		// when		
-		when().get(String.format("http://localhost:%s/accounts/balance/{account}", port))
-				// then:requested amount should be transfered
-				// then account source new balance=50$ and account target new balance=50$
+		when().get(String.format("http://localhost:%s/api/accounts/balance/{account}", port))
+				// then:account current balance should be returned.
 				.then().log().all().assertThat().statusCode(is(200))
 				.and().body(containsString("100"));
 		

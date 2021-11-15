@@ -27,7 +27,7 @@ class TransactionTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		//given
-		acc=new Account(1, "A1", new BigDecimal(20));
+		acc=new Account(1, "A1","Bill Gates", "My cash in hand", new BigDecimal(20));
 		trn=new Transaction(BigDecimal.valueOf(20));
 	}
 

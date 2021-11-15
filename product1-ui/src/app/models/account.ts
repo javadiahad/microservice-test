@@ -1,6 +1,6 @@
 
 export class Account {
-  id?: string;
+  code?: string;
   holderName: string;
   name: string;
   balance: number;

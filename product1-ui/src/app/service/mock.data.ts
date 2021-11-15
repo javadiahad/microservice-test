@@ -2,16 +2,16 @@ import { Account } from './account';
 
 export const mockAccounts: Account[] = [
   {
-    id: '1',
+    code: 'A100',
     holderName: 'Bill Gates',
     name: 'My cash in hand',      
-    balance: 100.00,
+    balance: 100000000.00,
   },
   {
-    id: '2',
+    code: 'A200',
     holderName: 'Bill Gates',
     name: 'My saving account',      
-    balance: 200.00,
+    balance: 200000000.00,
   },
 ];
 

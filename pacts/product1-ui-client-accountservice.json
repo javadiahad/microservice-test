@@ -3,98 +3,9 @@
     "name": "product1-ui-client"
   },
   "provider": {
-    "name": "accountService"
+    "name": "accountservice"
   },
   "interactions": [
-    {
-      "description": "a request to GET a account",
-      "providerState": "account A100 exists",
-      "request": {
-        "method": "GET",
-        "path": "/api/accounts/A100"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-        },
-        "body": {
-          "holderName": "Bill Gates",
-          "name": "My cash in hand",
-          "balance": 0
-        },
-        "matchingRules": {
-          "$.body": {
-            "match": "type"
-          }
-        }
-      }
-    },
-    {
-      "description": "a request to POST a account",
-      "providerState": "provider opens a new account",
-      "request": {
-        "method": "POST",
-        "path": "/api/accounts",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "holderName": "Bill Gates",
-          "name": "My cash in hand",
-          "balance": 0
-        }
-      },
-      "response": {
-        "status": 201,
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "id": "A100"
-        },
-        "matchingRules": {
-          "$.body": {
-            "match": "type"
-          }
-        }
-      }
-    },
-    {
-      "description": "a request to PUT a account",
-      "providerState": "account A100 exists",
-      "request": {
-        "method": "PUT",
-        "path": "/api/accounts/A100",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "holderName": "Bill Gates",
-          "name": "My cash in hand",
-          "balance": 0
-        },
-        "matchingRules": {
-          "$.body": {
-            "match": "type"
-          }
-        }
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-        },
-        "body": {
-          "holderName": "Bill Gates",
-          "name": "My cash in hand",
-          "balance": 0
-        },
-        "matchingRules": {
-          "$.body": {
-            "match": "type"
-          }
-        }
-      }
-    },
     {
       "description": "a request for all the accounts",
       "providerState": "Two accounts exists",
@@ -108,16 +19,16 @@
         },
         "body": [
           {
-            "id": "1",
+            "code": "A100",
             "holderName": "Bill Gates",
             "name": "My cash in hand",
-            "balance": 100
+            "balance": 100000000
           },
           {
-            "id": "2",
+            "code": "A200",
             "holderName": "Bill Gates",
-            "name": "My saving in hand",
-            "balance": 200
+            "name": "My saving account",
+            "balance": 200000000
           }
         ],
         "matchingRules": {

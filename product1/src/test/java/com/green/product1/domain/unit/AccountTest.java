@@ -25,7 +25,8 @@ class AccountTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		//given
-		acc=new Account(1, "A1", new BigDecimal(10));
+		acc=new Account(1,"A110","Bill Gates", "My cash in hand", new BigDecimal(10));
+
 	}
 
 	

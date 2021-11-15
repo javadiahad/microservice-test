@@ -59,8 +59,8 @@ public class TransferServiceAPITest {
 	@Test
 	@DisplayName("")
 	final void givenTwoAccountAndAmountWhenDoTransferThenSucceedAndReturnId() throws Exception {
-		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100", BigDecimal.ONE)));
-		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200", BigDecimal.ONE)));
+		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100","Bill Gates", "My cash in hand", BigDecimal.ONE)));
+		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200","Poor People", "Living expenses", BigDecimal.ONE)));
 		when(tr.save(any())).thenReturn(new Transaction(1, BigDecimal.ONE));
 		mvc.perform(post("/api/transfers").content(asJson(new TransferRequest("A100", "A200", BigDecimal.ONE)))
 				.contentType(MediaType.APPLICATION_JSON)
@@ -75,7 +75,7 @@ public class TransferServiceAPITest {
 	@DisplayName("")
 	final void givenWrongAccountWhenTransferThenShouldThrowException() throws Exception {
 		when(ar.findByCode("A100")).thenReturn(Optional.empty());
-		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200", BigDecimal.ONE)));
+		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200","Bill Gates", "My cash in hand", BigDecimal.ONE)));
 		when(tr.save(any())).thenReturn(new Transaction(1, BigDecimal.ONE));
 		mvc.perform(post("/api/transfers").content(asJson(new TransferRequest("A100", "A200", BigDecimal.ONE)))
 				.contentType(MediaType.APPLICATION_JSON)
@@ -88,8 +88,8 @@ public class TransferServiceAPITest {
 	@Test
 	@DisplayName("")
 	final void givenBigAmountWhenTransferThenShouldThrowInsufficentException() throws Exception {
-		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100", BigDecimal.ONE)));
-		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200", BigDecimal.valueOf(100))));
+		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100","Poor People", "Living expenses", BigDecimal.ONE)));
+		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200","Bill Gates", "My cash in hand", BigDecimal.valueOf(100))));
 		when(tr.save(any())).thenReturn(new Transaction(1, BigDecimal.ONE));
 		mvc.perform(post("/api/transfers").content(asJson(new TransferRequest("A100", "A200", BigDecimal.valueOf(100))))
 				.contentType(MediaType.APPLICATION_JSON)

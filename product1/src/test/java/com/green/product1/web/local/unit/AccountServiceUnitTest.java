@@ -45,7 +45,7 @@ class AccountServiceUnitTest {
 	@Test
 	@DisplayName("")
 	final void givenValidAccountThenShouldReturnBalance(){
-		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account( "A100", BigDecimal.ONE)));
+		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account( "A100","Bill Gates", "My cash in hand", BigDecimal.ONE)));
 		assertEquals(BigDecimal.ONE, as.getBalance("A100"));
 	}
 	

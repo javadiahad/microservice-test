@@ -7,8 +7,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -42,10 +40,10 @@ import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvide
  */
 
 @ExtendWith(SpringExtension.class)
-@Provider("accountservice")
+@Provider("transferservice")
 @PactFolder("../pacts")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AccountServiceProviderContractTest {
+public class TransferServiceProviderContractTest {
 
 	@LocalServerPort
 	private int port;
@@ -53,8 +51,11 @@ public class AccountServiceProviderContractTest {
 	@MockBean
 	private AccountRepository ar;
 
+	@MockBean
+	private TransactionRepository tr;
+
 	@Mock
-	private AccountService accountService;
+	private TransferService accountService;
 
 	@BeforeEach
 	void before(PactVerificationContext context) throws Exception {
@@ -67,12 +68,22 @@ public class AccountServiceProviderContractTest {
 		context.verifyInteraction();
 	}
 
-	@State("Two accounts exists")
-	public void findAll() {
-		List<Account> al = new ArrayList<>();
-		al.add(new Account("A100", "Bill Gates", "My cash in hand", BigDecimal.valueOf(100000000)));
-		al.add(new Account("A200", "Bill Gates", "My saving account", BigDecimal.valueOf(200000000)));
-		when(ar.findAll()).thenReturn(al);
+	@State("Two Account with sufficient balance exists")
+	public void transfer() {
+		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100","Bill Gates", "My cash in hand", BigDecimal.valueOf(100))));
+		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200","Poor People", "Living expenses", BigDecimal.ONE)));
+		when(tr.save(any())).thenReturn(new Transaction(111, BigDecimal.valueOf(100).setScale(2)));
+		//It's also possible to mock accountService itself 
+		 //when(accountService.transfer(new TransferRequest("A100", "A200", BigDecimal.valueOf(100))
+        //.thenReturn(new Transaction(111, BigDecimal.valueOf(100)));
 	}
+	
+	@State("Two Account exists,source account balance is Insufficient")
+	public void transferRaiseException() {
+		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100","Poor People", "Living expenses", BigDecimal.valueOf(100))));
+		when(ar.findByCode("A300")).thenReturn(Optional.of(new Account("A300","Bill Gates", "My cash in hand", BigDecimal.ONE)));
+		when(tr.save(any())).thenReturn(new Transaction(111, BigDecimal.valueOf(101)));		
+	}
+
 
 }

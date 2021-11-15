@@ -15,26 +15,27 @@ export class AccountService {
   }
 
 
-  open(resource: Account): Observable<String> {
-    return this.httpClient
-      .post(this.BASE_URL, resource).pipe(
-        map(data => data['id']));
-  }
-
-  get(id: string): Observable<Account> {
-    return this.httpClient.get<Account>(`${this.BASE_URL}/${id}`);
-  }
-
-
-  update(resource: Account, id: string): Observable<any> {
-    return this.httpClient
-      .put(`${this.BASE_URL}/${id}`, resource);
-  }
-
   findAll(): Observable<Account[]> {
     return this.httpClient.get<Account[]>(this.BASE_URL)
       .pipe(map(res => res.map(element => new Account(element))));
   }
+  
+  // open(resource: Account): Observable<String> {
+  //   return this.httpClient
+  //     .post(this.BASE_URL, resource).pipe(
+  //       map(data => data['id']));
+  // }
+
+  // get(id: string): Observable<Account> {
+  //   return this.httpClient.get<Account>(`${this.BASE_URL}/${id}`);
+  // }
+
+
+  // update(resource: Account, id: string): Observable<any> {
+  //   return this.httpClient
+  //     .put(`${this.BASE_URL}/${id}`, resource);
+  // }
+
 
 
 }
