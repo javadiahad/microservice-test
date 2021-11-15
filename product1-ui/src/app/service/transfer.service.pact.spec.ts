@@ -8,7 +8,7 @@ import { TransferRequest } from '../models/TransferRequest';
 describe('TransferServicePact', () => {
 
   const provider: Pact = new Pact({
-    port: 1234,
+    port: 80,
     log: path.resolve(process.cwd(), 'pact', 'logs', 'TransferServicePact.log'),
     dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,

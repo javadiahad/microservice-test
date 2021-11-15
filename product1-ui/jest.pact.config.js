@@ -10,6 +10,6 @@ module.exports = {
     stringifyContentPathRegex: true
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  testURL: 'http://localhost:1234',
+  testURL: 'http://localhost:80',
   setupFilesAfterEnv: ['<rootDir>/pact/jest/setupJest.ts']
 };

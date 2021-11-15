@@ -9,9 +9,9 @@ export const mockAccounts: Account[] = [
   },
   {
     code: 'A200',
-    holderName: 'Bill Gates',
-    name: 'My saving account',      
-    balance: 200000000.00,
+    holderName: 'Poor People',
+    name: 'Living expenses',      
+    balance: 0.00,
   },
 ];
 

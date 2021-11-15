@@ -1,5 +1,74 @@
-I, [2021-11-14T07:57:28.046006 #29840]  INFO -- : Registered expected interaction GET /api/accounts
-D, [2021-11-14T07:57:28.047006 #29840] DEBUG -- : {
+I, [2021-11-15T19:12:26.815089 #11700]  INFO -- : Registered expected interaction POST /api/transfers
+D, [2021-11-15T19:12:26.816109 #11700] DEBUG -- : {
+  "description": "a request to POST a transferRequest",
+  "providerState": "Two Account with sufficient balance exists",
+  "request": {
+    "method": "POST",
+    "path": "/api/transfers",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "accountFrom": "A100",
+      "accountTo": "A200",
+      "amount": 20
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "id": 111
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-15T19:12:27.012635 #11700]  INFO -- : Received request POST /api/transfers
+D, [2021-11-15T19:12:27.014633 #11700] DEBUG -- : {
+  "path": "/api/transfers",
+  "query": "",
+  "method": "post",
+  "body": {
+    "accountFrom": "A100",
+    "accountTo": "A200",
+    "amount": 20
+  },
+  "headers": {
+    "Content-Length": "53",
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-11-15T19:12:27.014633 #11700]  INFO -- : Found matching response for POST /api/transfers
+D, [2021-11-15T19:12:27.014633 #11700] DEBUG -- : {
+  "status": 200,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "id": 111
+    }
+  }
+}
+I, [2021-11-15T19:12:27.043649 #11700]  INFO -- : Verifying - interactions matched
+I, [2021-11-15T19:12:27.054643 #11700]  INFO -- : Cleared interactions
+I, [2021-11-15T19:12:27.076630 #11700]  INFO -- : Writing pact for accountservice to F:/work1400/microservice-test/pacts/product1-ui-client-accountservice.json
+I, [2021-11-15T19:12:27.099509 #11700]  INFO -- : Registered expected interaction GET /api/accounts
+D, [2021-11-15T19:12:27.099509 #11700] DEBUG -- : {
   "description": "a request for all the accounts",
   "providerState": "Two accounts exists",
   "request": {
@@ -21,33 +90,33 @@ D, [2021-11-14T07:57:28.047006 #29840] DEBUG -- : {
         },
         {
           "code": "A200",
-          "holderName": "Bill Gates",
-          "name": "My saving account",
-          "balance": 200000000
+          "holderName": "Poor People",
+          "name": "Living expenses",
+          "balance": 0
         }
       ]
     }
   },
   "metadata": null
 }
-I, [2021-11-14T07:57:28.164641 #29840]  INFO -- : Received request GET /api/accounts
-D, [2021-11-14T07:57:28.164641 #29840] DEBUG -- : {
+I, [2021-11-15T19:12:27.199453 #11700]  INFO -- : Received request GET /api/accounts
+D, [2021-11-15T19:12:27.200453 #11700] DEBUG -- : {
   "path": "/api/accounts",
   "query": "",
   "method": "get",
   "headers": {
     "Accept": "application/json, text/plain, */*",
-    "Referer": "http://localhost:1234/",
+    "Referer": "http://localhost/",
     "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
     "Accept-Language": "en",
     "Accept-Encoding": "gzip, deflate",
-    "Host": "localhost:1234",
+    "Host": "localhost",
     "Connection": "keep-alive",
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-11-14T07:57:28.165642 #29840]  INFO -- : Found matching response for GET /api/accounts
-D, [2021-11-14T07:57:28.165642 #29840] DEBUG -- : {
+I, [2021-11-15T19:12:27.200453 #11700]  INFO -- : Found matching response for GET /api/accounts
+D, [2021-11-15T19:12:27.200453 #11700] DEBUG -- : {
   "status": 200,
   "headers": {
   },
@@ -62,13 +131,13 @@ D, [2021-11-14T07:57:28.165642 #29840] DEBUG -- : {
       },
       {
         "code": "A200",
-        "holderName": "Bill Gates",
-        "name": "My saving account",
-        "balance": 200000000
+        "holderName": "Poor People",
+        "name": "Living expenses",
+        "balance": 0
       }
     ]
   }
 }
-I, [2021-11-14T07:57:28.197722 #29840]  INFO -- : Verifying - interactions matched
-I, [2021-11-14T07:57:28.208726 #29840]  INFO -- : Cleared interactions
-I, [2021-11-14T07:57:28.231713 #29840]  INFO -- : Writing pact for accountservice to F:/work1400/microservice-test/pacts/product1-ui-client-accountservice.json
+I, [2021-11-15T19:12:27.230130 #11700]  INFO -- : Verifying - interactions matched
+I, [2021-11-15T19:12:27.240124 #11700]  INFO -- : Cleared interactions
+I, [2021-11-15T19:12:27.264117 #11700]  INFO -- : Writing pact for accountservice to F:/work1400/microservice-test/pacts/product1-ui-client-accountservice.json

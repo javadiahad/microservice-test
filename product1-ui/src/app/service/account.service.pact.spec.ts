@@ -11,7 +11,7 @@ import {
 describe('AccountServicePact', () => {
 
   const provider: Pact = new Pact({
-    port: 1234,
+    port: 80,
     log: path.resolve(process.cwd(), 'pact', 'logs', 'AccountServicePact.log'),
     dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,
