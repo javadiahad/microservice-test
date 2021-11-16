@@ -8,6 +8,8 @@ product2 is a java client for Product1 microservice and includes a sample consum
 
 product1-ui is a simple angular application that consumes Product1 microservice and includes a sample consumer test (CDC by Pact).
 
+pacts is a folder for sharing contract between consumers(product1-ui,produc2) and provider(product1) in CDC tests.
+
 How to run tests for product1
 1-mvn clean package 
 This command runs all tests including CDC tests.
