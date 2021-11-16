@@ -67,7 +67,7 @@ public class AccountServiceProviderContractTest {
 		context.verifyInteraction();
 	}
 
-	@State("Two accounts exists")
+	@State("Two accounts exist")
 	public void findAll() {
 		List<Account> al = new ArrayList<>();
 		al.add(new Account("A100", "Bill Gates", "My cash in hand", BigDecimal.valueOf(100000000)));

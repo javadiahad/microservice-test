@@ -68,7 +68,7 @@ public class TransferServiceProviderContractTest {
 		context.verifyInteraction();
 	}
 
-	@State("Two Account with sufficient balance exists")
+	@State("Two Accounts with sufficient balance exist")
 	public void transfer() {
 		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100","Bill Gates", "My cash in hand", BigDecimal.valueOf(100))));
 		when(ar.findByCode("A200")).thenReturn(Optional.of(new Account("A200","Poor People", "Living expenses", BigDecimal.ONE)));
@@ -78,7 +78,7 @@ public class TransferServiceProviderContractTest {
         //.thenReturn(new Transaction(111, BigDecimal.valueOf(100)));
 	}
 	
-	@State("Two Account exists,source account balance is Insufficient")
+	@State("Two Accounts exist,source account balance is insufficient")
 	public void transferRaiseException() {
 		when(ar.findByCode("A100")).thenReturn(Optional.of(new Account("A100","Poor People", "Living expenses", BigDecimal.valueOf(100))));
 		when(ar.findByCode("A300")).thenReturn(Optional.of(new Account("A300","Bill Gates", "My cash in hand", BigDecimal.ONE)));

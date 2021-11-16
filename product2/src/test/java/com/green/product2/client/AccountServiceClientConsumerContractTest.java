@@ -56,8 +56,8 @@ public class AccountServiceClientConsumerContractTest {
 		.decimalType("amount", BigDecimal.valueOf(100))
 		.closeObject();
 		
-		return builder.given("Two Account with sufficient balance exists")
-				.uponReceiving("A request for transfering money between two account")
+		return builder.given("Two Accounts with sufficient balance exist")
+				.uponReceiving("A request for transfering money between two accounts")
 				.path("/api/transfers")
 				.method("POST")
 				.headers(headers)
@@ -72,35 +72,6 @@ public class AccountServiceClientConsumerContractTest {
 	}
 
 	
-
-//	@Pact(consumer = "accounts-transfer-consumer")
-//	public RequestResponsePact transferExceptionalPact(PactDslWithProvider builder) {
-//		Map<String, String> headers = new HashMap();
-//		headers.put("Content-Type", "application/json");
-//
-//		PactDslJsonBody requestBody = new PactDslJsonBody();
-//		requestBody.stringType("accountFrom","A100")
-//		.stringType("accountTo","A300")
-//		.numberType("amount",BigDecimal.valueOf(101)).closeObject();		
-//
-//		PactDslJsonBody responseBody = new PactDslJsonBody();		
-//		responseBody.stringType("errorCode", "ACC-1000")
-//		.closeObject();
-//
-//		return builder.given("Two Account exists,source account balance is Insufficient")
-//				.uponReceiving("A request for transfering an money between two account")
-//				.path("/accounts/transfer")
-//				.method("POST")
-//				.headers(headers)
-//				.body(requestBody)
-//				.willRespondWith()
-//				.status(400)
-//				//.headers(headers)	
-//				.body(responseBody)
-//				.toPact();
-//	}
-//	
-	
 	@Test
 	//@Disabled
 	@PactTestFor(pactMethod = "transferPact")
@@ -112,15 +83,5 @@ public class AccountServiceClientConsumerContractTest {
 	}
 
 	
-//	@Test
-//	@Disabled
-//	@PactTestFor(pactMethod = "transferExceptionalPact")
-//	public void testDoTransferExceptional() {
-//		HttpClientErrorException exception = assertThrows(HttpClientErrorException.class, () ->
-//		accountService.doTransfer("A100", "A300", BigDecimal.valueOf(101))
-//		);
-//		assertThat(HttpStatus.BAD_REQUEST, is(exception.getStatusCode()));
-//
-//	}
 		
 }

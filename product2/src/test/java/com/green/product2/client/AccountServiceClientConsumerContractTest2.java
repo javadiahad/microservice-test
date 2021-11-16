@@ -56,8 +56,8 @@ public class AccountServiceClientConsumerContractTest2 {
 		responseBody.stringType("errorCode", "ACC-1000")
 		.closeObject();
 
-		return builder.given("Two Account exists,source account balance is Insufficient")
-				.uponReceiving("A request for transfering an money between two account")
+		return builder.given("Two Accounts exist,source account balance is insufficient")
+				.uponReceiving("A request for transfering an money between two accounts")
 				.path("/api/transfers")
 				.method("POST")
 				.headers(headers)

@@ -1,0 +1,77 @@
+{
+  "consumer": {
+    "name": "product1-ui-client1"
+  },
+  "provider": {
+    "name": "accountservice"
+  },
+  "interactions": [
+    {
+      "description": "a request for all accounts",
+      "providerState": "Two accounts exist",
+      "request": {
+        "method": "GET",
+        "path": "/api/accounts"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": [
+          {
+            "code": "A100",
+            "holderName": "Bill Gates",
+            "name": "My cash in hand",
+            "balance": 100000000
+          },
+          {
+            "code": "A200",
+            "holderName": "Poor People",
+            "name": "Living expenses",
+            "balance": 0
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to POST a transferRequest",
+      "providerState": "Two Accounts with sufficient balance exist",
+      "request": {
+        "method": "POST",
+        "path": "/api/transfers",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "accountFrom": "A100",
+          "accountTo": "A200",
+          "amount": 20
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 111
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  }
+}

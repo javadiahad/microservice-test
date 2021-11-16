@@ -16,7 +16,7 @@ describe('AccountServicePact', () => {
     dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,
     logLevel: 'debug',
-    consumer: 'product1-ui-client',
+    consumer: 'product1-ui-client1',
     provider: 'accountservice'
   });
 
@@ -52,8 +52,8 @@ describe('AccountServicePact', () => {
 
     beforeAll(async () => {
       await provider.addInteraction({
-        state: `Two accounts exists`,
-        uponReceiving: 'a request for all the accounts',
+        state: `Two accounts exist`,
+        uponReceiving: 'a request for all accounts',
         withRequest: {
           method: 'GET',
           path: `/api/accounts`,
@@ -65,7 +65,7 @@ describe('AccountServicePact', () => {
       });
     });
 
-    it('should receive the full list of accounts', async () => {
+    it('should receive full list of accounts', async () => {
       const accountService: AccountService = TestBed.get(AccountService);
 
       await accountService.findAll().toPromise().then(response => {

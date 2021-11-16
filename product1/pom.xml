@@ -107,7 +107,7 @@
 			</plugin>
 
 
-		<!--  <plugin>
+		  <plugin>
                 <groupId>au.com.dius.pact.provider</groupId>
                 <artifactId>maven</artifactId>
                 <version>4.1.21</version>
@@ -129,7 +129,7 @@
                     </tags>
                 </configuration>
             </plugin>
- -->
+ 
 		</plugins>
 
 	</build>

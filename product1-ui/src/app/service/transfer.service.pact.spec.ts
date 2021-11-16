@@ -13,7 +13,7 @@ describe('TransferServicePact', () => {
     dir: path.resolve(process.cwd(), '..', 'pacts'),
     spec: 3,
     logLevel: 'debug',
-    consumer: 'product1-ui-client',
+    consumer: 'product1-ui-client2',
     provider: 'transferservice'
   });
 
@@ -56,7 +56,7 @@ describe('TransferServicePact', () => {
 
     beforeAll(async () => {
       await provider.addInteraction({
-        state: `Two Account with sufficient balance exists`,
+        state: `Two Accounts with sufficient balance exist`,
         uponReceiving: 'a request to POST a transferRequest',
         withRequest: {
           method: 'POST',
@@ -78,7 +78,7 @@ describe('TransferServicePact', () => {
       });
     });
 
-    it('should transfer requested ammount', async () => {
+    it('should transfer requested amount', async () => {
       const accountService: TransferService = TestBed.get(TransferService);
       await accountService.create(expectedTransferRequest).toPromise().then(response => {
         expect(response).toEqual(transferId);

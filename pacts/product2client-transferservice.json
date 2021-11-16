@@ -7,7 +7,7 @@
   },
   "interactions": [
     {
-      "description": "A request for transfering money between two account",
+      "description": "A request for transfering money between two accounts",
       "request": {
         "method": "POST",
         "path": "/api/transfers",
@@ -80,7 +80,7 @@
       },
       "providerStates": [
         {
-          "name": "Two Account with sufficient balance exists"
+          "name": "Two Accounts with sufficient balance exist"
         }
       ]
     }
