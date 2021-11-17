@@ -34,7 +34,7 @@ for example run >npx jest -t account
 ## How to run Product1
 Inside Product1 folder run (mvnw spring-boot:run). It starts product1 microservice
 Product1 microservice uses an in-memory database. It seeds database by sample data on startup.
-If accessing an external port has limited in your organization, this command (mvnw spring-boot:run) won't work. So in the Product1 folder uses something like this(java -jar target/product1-0.0.1-SNAPSHOT.jar) instead.
+If accessing an external port has limited in your organization, this command (mvnw spring-boot:run) won't work. In the Product1 folder run something like this(java -jar target/product1-0.0.1-SNAPSHOT.jar) instead.
 
 ## How to run product1-ui
 
