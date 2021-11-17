@@ -1,12 +1,22 @@
 # microservice-test
 
 product1 includes sample tests for different layers of an instance spring boot microservice.
+1-Sociable Unit testing for Entities(They are not anemic)
+2-Solitary Unit testing for Services
+3-Integration test for Repositories
+4-Component test for overall service test.
+5-CDC test for API testing 
+
 
 
 product2 is a java client for Product1 microservice and includes a sample consumer test (CDC by Pact).
+1-CDC test for integration testing with calling service
 
 
-product1-ui is a simple angular application that consumes Product1 microservice and includes a sample consumer test (CDC by Pact).
+product1-ui is a simple angular application that consumes Product1 service and includes unit and consumer tests (CDC by Pact).
+
+1-Solitary Unit testing for Angular components
+5-CDC test for integrationtion testing with backend 
 
 pacts is a folder for sharing contract between consumers(product1-ui,produc2) and provider(product1) in CDC tests.
 
@@ -17,7 +27,7 @@ This command runs all tests including CDC tests.
 
 
 How to run tests for product1-ui
-1-npx jest in command
+1-npx jest in command 
 This command runs all tests including CDC tests.
 2-npx jest by filter
 npx jest -t account
