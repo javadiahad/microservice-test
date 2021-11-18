@@ -21,4 +21,3 @@ Object.defineProperty(document.body.style, 'transform', {
     };
   }
 });
-jest.setTimeout(30000);
