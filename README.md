@@ -32,8 +32,10 @@ for example run >npx jest -t account
 
 
 ## How to run accounts
-Inside accounts folder run (mvnw spring-boot:run). It starts accounts microservice
-accounts microservice uses an in-memory database. It seeds database by sample data on startup.
+Inside accounts folder run (mvnw spring-boot:run). 
+It starts accounts microservice.
+accounts microservice uses an in-memory database.
+It seeds database by sample data on startup.
 If accessing an external port has limited in your organization, this command (mvnw spring-boot:run) won't work. In the accounts folder run something like this(java -jar target/product1-0.0.1-SNAPSHOT.jar) instead.
 
 ## How to run bank-ui
