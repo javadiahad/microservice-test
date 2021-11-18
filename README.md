@@ -5,15 +5,15 @@ accounts include sample tests for different layers of an instance spring boot mi
 -  Sociable Unit testing for Entities(They are not anemic)
 -  Solitary Unit testing for Services
 -  Integration test for Repositories
--  Component test for overall service test.
--  CDC test for API testing.
+-  Component test for overall rest service test.
+-  CDC test for API testing in provider side.
 # cheques
 cheques is a java client for accounts microservice and include a sample consumer test (CDC by Pact).
--  CDC test for integration testing with transfer service.
+-  CDC test for integration testing with transfer service for consumer side.
 # bank-ui
 bank-ui is a simple angular application that consumes accounts service and includes unit and consumer tests (CDC by Pact).
 -  Solitary Unit testing for Angular components.
--  CDC test for integration testing with backend. 
+-  CDC test for integration testing with backend for consumer side. 
 
 # pacts
 pacts is a folder for sharing contracts between consumers(bank-ui,cheques) and provider(accounts) in CDC tests.
