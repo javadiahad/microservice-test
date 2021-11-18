@@ -3,4 +3,9 @@
 Product1 includes sample tests for different layers of an instance spring boot microservice.
 
 
-Product2 includes a sample consumer test (CDC by Pact) for the Product1 microservice.
+
+Tech stack:
+
+Java 8
+Spring Boot 2.5.x
+Pact 4.x
