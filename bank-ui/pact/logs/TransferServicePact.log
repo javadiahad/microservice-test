@@ -1,0 +1,69 @@
+I, [2021-11-18T12:52:47.053249 #44204]  INFO -- : Registered expected interaction POST /api/transfers
+D, [2021-11-18T12:52:47.054246 #44204] DEBUG -- : {
+  "description": "a request to POST a transferRequest",
+  "providerState": "Two Accounts with sufficient balance exist",
+  "request": {
+    "method": "POST",
+    "path": "/api/transfers",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "accountFrom": "A100",
+      "accountTo": "A200",
+      "amount": 20
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "id": 111
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-18T12:52:47.215420 #44204]  INFO -- : Received request POST /api/transfers
+D, [2021-11-18T12:52:47.216419 #44204] DEBUG -- : {
+  "path": "/api/transfers",
+  "query": "",
+  "method": "post",
+  "body": {
+    "accountFrom": "A100",
+    "accountTo": "A200",
+    "amount": 20
+  },
+  "headers": {
+    "Content-Length": "53",
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-11-18T12:52:47.217437 #44204]  INFO -- : Found matching response for POST /api/transfers
+D, [2021-11-18T12:52:47.217437 #44204] DEBUG -- : {
+  "status": 200,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "id": 111
+    }
+  }
+}
+I, [2021-11-18T12:52:47.274533 #44204]  INFO -- : Verifying - interactions matched
+I, [2021-11-18T12:52:47.292524 #44204]  INFO -- : Cleared interactions
+I, [2021-11-18T12:52:47.326504 #44204]  INFO -- : Writing pact for transferservice to F:/work1400/microservice-test/pacts/bank-ui-client2-transferservice.json

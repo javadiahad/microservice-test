@@ -1,0 +1,104 @@
+I, [2021-11-18T12:39:33.307724 #32608]  INFO -- : Registered expected interaction GET /api/accounts
+D, [2021-11-18T12:39:33.307724 #32608] DEBUG -- : {
+  "description": "a request for all accounts",
+  "providerState": "Two accounts exist",
+  "request": {
+    "method": "GET",
+    "path": "/api/accounts"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": [
+        {
+          "code": "A100",
+          "holderName": "Bill Gates",
+          "name": "My cash in hand",
+          "balance": 100000000
+        },
+        {
+          "code": "A200",
+          "holderName": "Poor People",
+          "name": "Living expenses",
+          "balance": 0
+        }
+      ]
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-18T12:39:33.450641 #32608]  INFO -- : Received request GET /api/accounts
+D, [2021-11-18T12:39:33.450641 #32608] DEBUG -- : {
+  "path": "/api/accounts",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-11-18T12:39:33.451657 #32608]  INFO -- : Found matching response for GET /api/accounts
+D, [2021-11-18T12:39:33.451657 #32608] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": [
+      {
+        "code": "A100",
+        "holderName": "Bill Gates",
+        "name": "My cash in hand",
+        "balance": 100000000
+      },
+      {
+        "code": "A200",
+        "holderName": "Poor People",
+        "name": "Living expenses",
+        "balance": 0
+      }
+    ]
+  }
+}
+I, [2021-11-18T12:39:33.507609 #32608]  INFO -- : Verifying - interactions matched
+I, [2021-11-18T12:39:33.527597 #32608]  INFO -- : Cleared interactions
+I, [2021-11-18T12:39:33.550603 #32608]  INFO -- : Writing pact for accountservice to F:/work1400/microservice-test/pacts/bank-ui-client1-accountservice.json
+I, [2021-11-18T12:39:33.625560 #32608]  INFO -- : Registered expected interaction POST /api/transfers
+D, [2021-11-18T12:39:33.625560 #32608] DEBUG -- : {
+  "description": "a request to POST a transferRequest",
+  "providerState": "Two Accounts with sufficient balance exist",
+  "request": {
+    "method": "POST",
+    "path": "/api/transfers",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "accountFrom": "A100",
+      "accountTo": "A200",
+      "amount": 20
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "id": 111
+      }
+    }
+  },
+  "metadata": null
+}
