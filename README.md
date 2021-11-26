@@ -59,7 +59,7 @@ Inside bank-ui folder in command run
 ng serve --proxy-config proxy.conf.json
 
 ```
-It starts product1-ui Angular web application.
+It starts bank-ui Angular web application.
 For watching communication logs you can use --verbose option,
 like this.
 ```
@@ -67,3 +67,12 @@ ng serve --proxy-config proxy.conf.json --verbose
 
 ```
 
+## How to run by docker compose 
+
+Inside microservice-test(root) folder in command run
+```
+docker-compose -f "docker-compose.yml" up -d --build
+
+```
+It creates related docker images and starts both bank-ui Angular web application and backend accounts microservice containers.
+This way it bank-ui can call microservice by its container name and related Url.
