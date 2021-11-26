@@ -75,4 +75,4 @@ docker-compose -f "docker-compose.yml" up -d --build
 
 ```
 It creates related docker images and starts both bank-ui Angular web application and backend accounts microservice containers.
-This way it bank-ui can call microservice by its container name and related Url.
+This way bank-ui can call backend microservice by its container name and related Url.
