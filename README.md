@@ -1,14 +1,15 @@
 # Microservice Testing
 
 # accounts
-accounts include sample tests for different layers of an instance spring boot microservice.
+accounts is a sample microservice application by spring boot
+accounts includes sample tests for different layers of an instance microservice.
 -  Sociable Unit testing for Entities(They are not anemic)
 -  Solitary Unit testing for Services
 -  Integration test for Repositories
 -  Component test for overall rest service test.
 -  CDC test for API testing in provider side.
 # cheques
-cheques is a java client for accounts microservice and include a sample consumer test (CDC by Pact).
+cheques is a java sample client application for accounts service and includes a sample consumer test (CDC by Pact).
 -  CDC test for integration testing with transfer service for consumer side.
 # bank-ui
 bank-ui is a simple angular application that consumes accounts service and includes unit and consumer tests (CDC by Pact).
