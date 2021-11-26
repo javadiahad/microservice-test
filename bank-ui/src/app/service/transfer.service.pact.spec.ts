@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TransferService } from './transfer.service';
 import * as path from 'path';
 import { Matchers, Pact } from '@pact-foundation/pact';
-import { TransferRequest } from '../models/TransferRequest';
+import { TransferRequest } from '../models/transferRequest';
 
 describe('TransferServicePact', () => {
 

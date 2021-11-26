@@ -1,5 +1,5 @@
-I, [2021-11-18T15:42:47.867422 #35192]  INFO -- : Registered expected interaction POST /api/transfers
-D, [2021-11-18T15:42:47.868407 #35192] DEBUG -- : {
+I, [2021-11-25T20:41:34.305345 #17884]  INFO -- : Registered expected interaction POST /api/transfers
+D, [2021-11-25T20:41:34.306361 #17884] DEBUG -- : {
   "description": "a request to POST a transferRequest",
   "providerState": "Two Accounts with sufficient balance exist",
   "request": {
@@ -28,8 +28,40 @@ D, [2021-11-18T15:42:47.868407 #35192] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2021-11-18T15:42:47.943612 #35192]  INFO -- : Received request POST /api/transfers
-D, [2021-11-18T15:42:47.943612 #35192] DEBUG -- : {
+I, [2021-11-25T20:41:34.325342 #17884]  INFO -- : Registered expected interaction GET /api/accounts
+D, [2021-11-25T20:41:34.326341 #17884] DEBUG -- : {
+  "description": "a request for all accounts",
+  "providerState": "Two accounts exist",
+  "request": {
+    "method": "GET",
+    "path": "/api/accounts"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": [
+        {
+          "code": "A100",
+          "holderName": "Bill Gates",
+          "name": "My cash in hand",
+          "balance": 100000000
+        },
+        {
+          "code": "A200",
+          "holderName": "Poor People",
+          "name": "Living expenses",
+          "balance": 0
+        }
+      ]
+    }
+  },
+  "metadata": null
+}
+I, [2021-11-25T20:41:34.713228 #17884]  INFO -- : Received request POST /api/transfers
+D, [2021-11-25T20:41:34.713228 #17884] DEBUG -- : {
   "path": "/api/transfers",
   "query": "",
   "method": "post",
@@ -51,8 +83,8 @@ D, [2021-11-18T15:42:47.943612 #35192] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-11-18T15:42:47.944630 #35192]  INFO -- : Found matching response for POST /api/transfers
-D, [2021-11-18T15:42:47.944630 #35192] DEBUG -- : {
+I, [2021-11-25T20:41:34.714227 #17884]  INFO -- : Found matching response for POST /api/transfers
+D, [2021-11-25T20:41:34.714227 #17884] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": "application/json"
@@ -64,6 +96,16 @@ D, [2021-11-18T15:42:47.944630 #35192] DEBUG -- : {
     }
   }
 }
-I, [2021-11-18T15:42:47.977604 #35192]  INFO -- : Verifying - interactions matched
-I, [2021-11-18T15:42:47.987594 #35192]  INFO -- : Cleared interactions
-I, [2021-11-18T15:42:47.998614 #35192]  INFO -- : Writing pact for transferservice to F:/work1400/microservice-test/pacts/bank-ui-client2-transferservice.json
+W, [2021-11-25T20:41:34.761225 #17884]  WARN -- : Verifying - actual interactions do not match expected interactions. 
+Missing requests:
+	GET /api/accounts
+
+
+
+W, [2021-11-25T20:41:34.761225 #17884]  WARN -- : Missing requests:
+	GET /api/accounts
+
+
+
+I, [2021-11-25T20:41:34.805221 #17884]  INFO -- : Cleared interactions
+I, [2021-11-25T20:41:34.827249 #17884]  INFO -- : Writing pact for transferservice to F:/work1400/microservice-test/pacts/bank-ui-client2-transferservice.json

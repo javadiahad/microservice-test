@@ -3,7 +3,7 @@ import {TransferRequest} from '../../models/transferRequest';
 import {TransferService} from "../../service/transfer.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AccountService} from "../../service/account.service";
-import {Account} from "../../models/Account";
+import {Account} from "../../models/account";
 
 @Component({
   selector: 'app-create-transfer',
@@ -11,6 +11,7 @@ import {Account} from "../../models/Account";
   styleUrls: ['./create-transfer.component.css']
 })
 export class CreateTransferComponent implements OnInit {
+
   readonly transfer: TransferRequest;
   accounts: Account[] = [];
   private readonly snackbar: MatSnackBar;
