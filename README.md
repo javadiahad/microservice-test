@@ -20,6 +20,17 @@ bank-ui is a simple angular application that consumes accounts service and inclu
 # pacts
 pacts is a folder for sharing contracts between consumers(bank-ui,cheques) and provider(accounts) in CDC tests.
 
+# Test Tools
+-  JUnit(jupiter)
+-  Spring Framework Testing
+-  Mokito
+-  Hamcrest
+-  RestAssured
+-  Pact
+-  Jest
+-  Angular Testing
+-  
+
 ## How to run tests for accounts
  ```
 mvn clean package 
