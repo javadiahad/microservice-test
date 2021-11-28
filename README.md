@@ -14,8 +14,8 @@ cheques is a java sample client application for accounts service and includes a 
 -  CDC test for integration testing with transfer service for consumer side.
 # bank-ui
 bank-ui is a simple angular application that consumes accounts service and includes unit and consumer tests (CDC by Pact).
--  Solitary Unit testing for Angular components.
--  CDC test for integration testing with backend for consumer side. 
+-  Unit testing for Angular components.
+-  CDC test for integration testing with backend(consumer side). 
 
 # pacts
 pacts is a folder for sharing contracts between consumers(bank-ui,cheques) and provider(accounts) in CDC tests.
@@ -53,7 +53,7 @@ npx jest .component.spec.ts
 ```
  npx jest by a filter 
 
-## How to run accounts
+## How to run accounts microservice standalone
 Inside accounts folder run 
 ```
 mvnw spring-boot:run
@@ -67,7 +67,7 @@ If accessing an external port has limited in your organization, this command (mv
 java -jar target/product1-0.0.1-SNAPSHOT.jar
 
 ```
-## How to run bank-ui
+## How to run bank-ui standalone
 
 Inside bank-ui folder in command run
 ```
@@ -82,7 +82,7 @@ ng serve --proxy-config proxy.conf.json --verbose
 
 ```
 
-## How to run by docker compose 
+## How to run whole application by docker compose (accounts,bank-ui) 
 
 Inside microservice-test(root) folder in command run
 ```
