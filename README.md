@@ -8,6 +8,7 @@ accounts includes sample tests for different layers of an instance microservice.
 -  Integration test for Repositories
 -  Component test for overall rest service test.
 -  CDC test for API testing in provider side.
+
 # cheques
 cheques is a java sample client application for accounts service and includes a sample consumer test (CDC by Pact).
 -  CDC test for integration testing with transfer service for consumer side.
@@ -35,6 +36,9 @@ This command runs all tests including CDC tests.-i option execute pact test seri
 ```
 npx jest -t account
 npx jest -i -t pact
+npx jest -i .pact.spec.ts
+npx jest .component.spec.ts
+
 ```
  npx jest by a filter 
 
@@ -76,3 +80,20 @@ docker-compose -f "docker-compose.yml" up -d --build
 ```
 It creates related docker images and starts both bank-ui Angular web application and backend accounts microservice containers.
 This way bank-ui can call backend microservice by its container name and related Url.
+
+
+## Documentation
+Learn more about how to test 
+
+-A great article by Ham Vocke
+https://martinfowler.com/articles/practical-test-pyramid.html
+
+-Chapter 9 and 10 abount testing from Microservices patterns book 
+https://microservices.io/book
+-CDC test
+https://docs.pact.io/
+https://reflectoring.io/consumer-driven-contracts-with-angular-and-pact/
+-jest 
+https://jestjs.io/
+
+
