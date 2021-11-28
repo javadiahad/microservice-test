@@ -99,7 +99,7 @@ Learn more about how to test
 - A great article by Ham Vocke
 https://martinfowler.com/articles/practical-test-pyramid.html
 
-- Chapter 9 and 10 abount testing from Microservices patterns book 
+- Chapter 9 and 10 about testing from Microservices patterns book 
 https://microservices.io/book
 
 - CDC test
