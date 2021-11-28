@@ -96,16 +96,16 @@ This way bank-ui can call backend microservice by its container name and related
 ## Documentation
 Learn more about how to test 
 
--A great article by Ham Vocke
+- A great article by Ham Vocke
 https://martinfowler.com/articles/practical-test-pyramid.html
 
--Chapter 9 and 10 abount testing from Microservices patterns book 
+- Chapter 9 and 10 abount testing from Microservices patterns book 
 https://microservices.io/book
 
--CDC test
+- CDC test
 https://docs.pact.io/
 https://reflectoring.io/consumer-driven-contracts-with-angular-and-pact/
 
--jest 
+- jest 
 https://www.xfive.co/blog/testing-angular-faster-jest/
 
