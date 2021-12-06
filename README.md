@@ -12,10 +12,12 @@ accounts includes sample tests for different layers of an instance microservice.
 # cheques
 cheques is a java sample client application for accounts service and includes a sample consumer test (CDC by Pact).
 -  CDC test for integration testing with transfer service for consumer side.
+-  workflow test(not finished) 
 # bank-ui
 bank-ui is a simple angular application that consumes accounts service and includes unit and consumer tests (CDC by Pact).
--  Unit testing for Angular components.
--  CDC test for integration testing with backend(consumer side). 
+-  Unit testing for Angular components(Jest).
+-  CDC test for integration testing with backend(consumer side) by Pact. 
+-  E2E testing by Cypress(not finished) 
 
 # pacts
 pacts is a folder for sharing contracts between consumers(bank-ui,cheques) and provider(accounts) in CDC tests.
