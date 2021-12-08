@@ -7,11 +7,11 @@ accounts includes sample tests for different layers of an instance microservice.
 -  Solitary Unit testing for Services
 -  Integration test for Repositories
 -  Component test for overall rest service test.
--  CDC test for API testing in provider side.
+-  CDC test for API testing on the provider side.
 
 # cheques
 cheques is a java sample client application for accounts service and includes a sample consumer test (CDC by Pact).
--  CDC test for integration testing with transfer service for consumer side.
+-  CDC test for integration testing(transfer service), consumer side.
 -  workflow test(not finished) 
 # bank-ui
 bank-ui is a simple angular application that consumes accounts service and includes unit and consumer tests (CDC by Pact).
@@ -84,7 +84,7 @@ ng serve --proxy-config proxy.conf.json --verbose
 
 ```
 
-## How to run whole application by docker compose (accounts,bank-ui) 
+## How to run the whole application by docker compose (accounts,bank-ui) 
 
 Inside microservice-test(root) folder in command run
 ```
