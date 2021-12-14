@@ -1,7 +1,7 @@
 # Simple Banking  
 
 # accounts
-accounts is a sample microservice application by spring boot,poblishes accounts list and transfer endpoints
+accounts is a sample microservice application by spring boot, publishes accounts list and transfer endpoints
 accounts includes sample tests for different layers of an instance microservice.
 -  Sociable Unit testing for Entities(They are not anemic)
 -  Solitary Unit testing for Services
