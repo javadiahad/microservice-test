@@ -1,5 +1,5 @@
 # Use official node image as the base image
-FROM node:12.11.1-alpine AS build
+FROM node:12.22.12-alpine AS build
 
 LABEL APP_ID="bank-ui"
 
