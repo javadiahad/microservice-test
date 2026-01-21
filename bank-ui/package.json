@@ -36,7 +36,7 @@
     "@angular/compiler-cli": "~11.2.14",
     "@pact-foundation/pact": "^9.16.5",
     "@pact-foundation/pact-node": "^10.14.0",
-    "@types/jasmine": "~3.6.0",
+    "@types/jasmine": "~3.10.0",
     "@types/jest": "^27.0.2",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
